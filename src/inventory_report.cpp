@@ -23,9 +23,16 @@ double calculateItemValue(const InventoryItem& item) {
 }
 
 int readInventoryFile(string filename, InventoryItem items[], int maxItems) {
+
+    //Make sure the array and size are valid.
+    if (items == nullptr || maxItems <= 0) {
+        return 0;
+    }
     ifstream inputFile(filename);
 
+    //Stops if the file cannot be opened
     if (!inputFile.is_open()) {
+        return 0;
 }
 
 int count = 0;
@@ -43,16 +50,21 @@ while (count < maxItems &&
     }
 
     inputFile.close();
+
     return count;
 }  
 
 bool writeInventoryReport(string filename, const InventoryItem items[], int count) {
-    ofstream outputFile(filename);
 
+    // Check that the array and count are valid.
      if (items == nullptr || count < 0) {
         return false;
     }
 
+    //opens the output file
+    ofstream outputFile(filename);
+
+    //returns false if the file cant be opened
     if (!outputFile.is_open()) {
         return false;
     }
