@@ -19,7 +19,7 @@ double calculateItemValue(const InventoryItem& item) {
 }
 
 int readInventoryFile(string filename, InventoryItem items[], int maxItems) {
-    ifstream inpiutFile(filename)
+    ifstream inputFile(filename)
 
     if (!inputFile.is_open()) {
 }
@@ -39,12 +39,11 @@ while (count < maxItems &&
     }
 
     inputFile.close();
-
     return count;
 }  
 
 bool writeInventoryReport(string filename, const InventoryItem items[], int count) {
-    ifstream outputFile(filename);
+    ofstream outputFile(filename);
 
     if (!outputFile.is_open()) {
         return false;
@@ -59,8 +58,7 @@ bool writeInventoryReport(string filename, const InventoryItem items[], int coun
                    << items[i].name << " "
                    << items[i].quantity << " "
                    << items[i].price << " "
-                   << calculateItemValue(items[i])
-                   << endl;
+                   << calculateItemValue(items[i]) << endl;
     }
 
     outputFile << "Total Inventory Value: "
