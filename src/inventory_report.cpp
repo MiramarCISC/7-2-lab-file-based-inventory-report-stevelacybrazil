@@ -44,7 +44,7 @@ while (count < maxItems &&
 }  
 
 bool writeInventoryReport(string filename, const InventoryItem items[], int count) {
-    ofstream outputFile(filename);
+    ifstream outputFile(filename);
 
     if (!outputFile.is_open()) {
         return false;
