@@ -19,7 +19,7 @@ double calculateItemValue(const InventoryItem& item) {
 }
 
 int readInventoryFile(string filename, InventoryItem items[], int maxItems) {
-    ifstream inputFile(filename)
+    ifstream inputFile(filename);
 
     if (!inputFile.is_open()) {
 }
