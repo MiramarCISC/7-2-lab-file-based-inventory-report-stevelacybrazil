@@ -49,6 +49,12 @@ while (count < maxItems &&
 bool writeInventoryReport(string filename, const InventoryItem items[], int count) {
     ofstream outputFile(filename);
 
+     if (items == nullptr || count < 0) {
+        return false;
+    }
+
+    ofstream outputFile(filename);
+
     if (!outputFile.is_open()) {
         return false;
     }
@@ -56,16 +62,18 @@ bool writeInventoryReport(string filename, const InventoryItem items[], int coun
     outputFile << fixed << setprecision(2);
 
     outputFile << "Inventory Report" << endl;
+    outputFile << "SKU Name Quantity Price Value" << endl;
 
     for (int i = 0; i < count; i++) {
         outputFile << items[i].sku << " "
                    << items[i].name << " "
                    << items[i].quantity << " "
                    << items[i].price << " "
-                   << calculateItemValue(items[i]) << endl;
+                   << calculateItemValue(items[i])
+                   << endl;
     }
 
-    outputFile << "Total inventory Value: "
+    outputFile << "Total inventory value: "
                << calculateTotalInventoryValue(items, count)
                << endl;
 
