@@ -53,8 +53,6 @@ bool writeInventoryReport(string filename, const InventoryItem items[], int coun
         return false;
     }
 
-    ofstream outputFile(filename);
-
     if (!outputFile.is_open()) {
         return false;
     }
