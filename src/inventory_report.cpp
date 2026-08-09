@@ -65,7 +65,7 @@ bool writeInventoryReport(string filename, const InventoryItem items[], int coun
                    << calculateItemValue(items[i]) << endl;
     }
 
-    outputFile << "Total Inventory Value: "
+    outputFile << "Total inventory Value: "
                << calculateTotalInventoryValue(items, count)
                << endl;
 
